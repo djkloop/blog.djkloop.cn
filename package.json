@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start --port 8083",
+    "start": "next start --port 36663",
     "yeah": "npm-run-all build start",
     "commit": "git add . && git cz"
   },
