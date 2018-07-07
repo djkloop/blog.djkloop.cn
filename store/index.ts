@@ -1,7 +1,12 @@
-import AppStore from './AppStore';
+import appStore from './AppStore';
+import aboutStore from './AboutStore';
+
 let store = null
 
 export function initializeStore () {
-  store = new AppStore('Hello Mobx!');
+  store = {
+    appStore,
+    aboutStore
+  }
   return store
 }

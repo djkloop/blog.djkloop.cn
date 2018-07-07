@@ -1,22 +1,28 @@
 import {observable, action, computed} from 'mobx';
 
-class AppStore {
-  @observable title: string | undefined;
+export class AppStore {
+  @observable title: string = "Hello Mobx";
 
-  constructor(title: string) {
-    this.title = title;
+  @action
+  setAppTitle(appTitle: string) {
+    this.title = appTitle;
   }
 
   @action
-  getTitle(title: string) {
-    this.title = title;
+  getAppTitle() {
+    return this.title;
   }
 
   @computed
-  get isString() {
-    return typeof(this.title != null);
+  get GetAppComputedTitle() {
+    return this.title;
+  }
+
+  @computed
+  get AppTitleIsEmptry() {
+    return this.title != null;
   }
 
 }
 
-export default AppStore;
+export default new AppStore();

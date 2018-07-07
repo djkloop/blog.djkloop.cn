@@ -4,7 +4,8 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import JssProvider from 'react-jss/lib/JssProvider';
 import getPageContext from '../src/getPageContext';
 import withMobixStore from '../lib/with-mobx-store';
-import { Provider } from 'mobx-react'
+import { Provider } from 'mobx-react';
+import DevTools from 'mobx-react-devtools';
 class MyApp extends App<any> {
   constructor(props) {
     super(props);
@@ -25,7 +26,7 @@ class MyApp extends App<any> {
     const { Component, pageProps, mobxStore } = this.props;
     return (
       <Container>
-        <Provider store={mobxStore}>
+        <Provider {...mobxStore}>
           <JssProvider
             registry={this.pageContext.sheetsRegistry}
             generateClassName={this.pageContext.generateClassName}
@@ -35,6 +36,7 @@ class MyApp extends App<any> {
               sheetsManager={this.pageContext.sheetsManager}
             >
               <Component pageContext={this.pageContext} {...pageProps} />
+              <DevTools />
             </MuiThemeProvider>
           </JssProvider>
         </Provider>

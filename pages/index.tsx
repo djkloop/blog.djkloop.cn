@@ -6,7 +6,7 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        <App title="Hello"/>
+        <App />
       </div>
     )
   }
