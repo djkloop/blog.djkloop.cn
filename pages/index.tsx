@@ -1,24 +1,15 @@
-import * as React from 'react';
-const css = require('./static/styles.styl');
+import React from 'react';
+import App from '../components/App/app';
 
-export interface Props {
-  name: string;
-  number?: number;
-}
 
-class Index extends React.Component<Props, object> {
+class Index extends React.Component {
   render() {
-    const { name = 'yeah!', number = 1 } = this.props;
-
     return (
-      <div className={css.hello}>
-        <div className="greeting">
-          Hello { name }
-          <button>11</button>
-        </div>
+      <div>
+        <App title="Hello"/>
       </div>
-    );
+    )
   }
-}
+};
 
 export default Index;

@@ -38,27 +38,6 @@ class MyDocument extends Document {
 }
 
 MyDocument.getInitialProps = ctx => {
-  // Resolution order
-  //
-  // On the server:
-  // 1. app.getInitialProps
-  // 2. page.getInitialProps
-  // 3. document.getInitialProps
-  // 4. app.render
-  // 5. page.render
-  // 6. document.render
-  //
-  // On the server with error:
-  // 1. document.getInitialProps
-  // 2. app.render
-  // 3. page.render
-  // 4. document.render
-  //
-  // On the client
-  // 1. app.getInitialProps
-  // 2. page.getInitialProps
-  // 3. app.render
-  // 4. page.render
 
   // Render app and page and get the context of the page with collected side effects.
   let pageContext;
@@ -84,7 +63,7 @@ MyDocument.getInitialProps = ctx => {
         <style
           id="jss-server-side"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: pageContext.sheetsRegistry.toString() }}
+          dangerouslySetInnerHTML={{ __html:pageContext.sheetsRegistry ? pageContext.sheetsRegistry.toString() : '' }}
         />
         {flush() || null}
       </React.Fragment>
