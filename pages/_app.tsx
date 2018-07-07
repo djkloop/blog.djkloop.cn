@@ -6,6 +6,8 @@ import getPageContext from '../src/getPageContext';
 import withMobixStore from '../lib/with-mobx-store';
 import { Provider } from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
+
+const isDev = process.env.NODE_ENV === 'development' ? true : false;
 class MyApp extends App<any> {
   constructor(props) {
     super(props);
@@ -36,7 +38,13 @@ class MyApp extends App<any> {
               sheetsManager={this.pageContext.sheetsManager}
             >
               <Component pageContext={this.pageContext} {...pageProps} />
-              <DevTools />
+              {
+                isDev
+                ?
+                <DevTools />
+                :
+                ''
+              }
             </MuiThemeProvider>
           </JssProvider>
         </Provider>
